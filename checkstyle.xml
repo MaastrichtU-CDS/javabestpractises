@@ -46,7 +46,6 @@
 
     <!-- Checks that a package-info.java file exists for each package.     -->
     <!-- See https://checkstyle.org/config_javadoc.html#JavadocPackage -->
-    <!-- <module name="JavadocPackage"/> -->
 
     <!-- Checks whether files end with a new line.                        -->
     <!-- See https://checkstyle.org/config_misc.html#NewlineAtEndOfFile -->
@@ -87,11 +86,11 @@
 
         <!-- Checks for Javadoc comments.                     -->
         <!-- See https://checkstyle.org/config_javadoc.html -->
-        <module name="InvalidJavadocPosition"/>
-        <module name="JavadocMethod"/>
-        <module name="JavadocType"/>
-        <module name="JavadocVariable"/>
-        <module name="JavadocStyle"/>
+        <!--        <module name="InvalidJavadocPosition"/>-->
+        <!--        <module name="JavadocMethod"/>-->
+        <!--        <module name="JavadocType"/>-->
+        <!--        <module name="JavadocVariable"/>-->
+        <!--        <module name="JavadocStyle"/>-->
 
         <!-- not making javadoc mandatory
         <module name="MissingJavadocMethod"/> -->
@@ -122,18 +121,6 @@
         <module name="MethodLength"/>
         <module name="ParameterNumber"/>
 
-        <!-- Checks for whitespace                               -->
-        <!-- See https://checkstyle.org/config_whitespace.html -->
-        <module name="EmptyForIteratorPad"/>
-        <module name="GenericWhitespace"/>
-        <module name="MethodParamPad"/>
-        <module name="NoWhitespaceAfter"/>
-        <module name="NoWhitespaceBefore"/>
-        <module name="OperatorWrap"/>
-        <module name="ParenPad"/>
-        <module name="TypecastParenPad"/>
-        <module name="WhitespaceAfter"/>
-        <module name="WhitespaceAround"/>
 
         <!-- Modifier Checks                                    -->
         <!-- See https://checkstyle.org/config_modifiers.html -->
@@ -152,7 +139,7 @@
         <!-- See https://checkstyle.org/config_coding.html -->
         <module name="EmptyStatement"/>
         <module name="EqualsHashCode"/>
-        <module name="HiddenField"/>
+        <!--<module name="HiddenField"/>-->
         <module name="IllegalInstantiation"/>
         <module name="InnerAssignment"/>
         <module name="MagicNumber"/>
@@ -163,7 +150,6 @@
 
         <!-- Checks for class design                         -->
         <!-- See https://checkstyle.org/config_design.html -->
-        <!-- <module name="DesignForExtension"/> -->
         <module name="FinalClass"/>
         <module name="HideUtilityClassConstructor"/>
         <module name="InterfaceIsType"/>
