@@ -1,13 +1,10 @@
 public class Example {
-    public void example() {
-    }
 
-    public void example2() {
+    public void sum() {
     }
 
     public void example3() {
+
     }
 
-//    public void Example4() {
-//    }
 }
