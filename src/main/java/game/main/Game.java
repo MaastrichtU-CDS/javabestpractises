@@ -1,5 +1,6 @@
 package game.main;
 
+import game.gui.GUI;
 import game.logic.board.Board;
 import game.logic.player.Player;
 import game.logic.player.ai.MinMaxAi;
@@ -11,11 +12,27 @@ public class Game {
     private Board board;
     private Player player1;
     private Player player2;
-    private int size = 3;
+    private int size;
 
-    private int currentTurn;
+    private int currentTurn = 1;
 
-    private void startGame() throws IOException {
+    public int getCurrentTurn() {
+        return currentTurn;
+    }
+
+    public Game(int size) {
+        this.size = size;
+    }
+
+    public boolean isValidMove(int x, int y) {
+        return board.isValidMove(x, y);
+    }
+
+    public void makeMove(int x, int y) {
+
+    }
+
+    public void startGame() throws IOException {
         board = new Board(size);
         player1 = new HumanPlayer(1);
         player2 = new MinMaxAi(2);
@@ -56,8 +73,10 @@ public class Game {
     }
 
     public static void main(String[] args) {
-        Game game = new Game();
+
+        Game game = new Game(3);
         try {
+            GUI gui = new GUI();
             game.startGame();
         } catch (IOException e) {
             e.printStackTrace();
