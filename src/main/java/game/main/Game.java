@@ -1,12 +1,8 @@
 package game.main;
 
-import game.gui.GUI;
 import game.logic.board.Board;
 import game.logic.player.Player;
-import game.logic.player.ai.MinMaxAi;
 import game.logic.player.human.HumanPlayer;
-
-import java.io.IOException;
 
 public class Game {
     private Board board;
@@ -14,72 +10,79 @@ public class Game {
     private Player player2;
     private int size;
 
-    private int currentTurn = 1;
+    private Player currentPlayer;
 
-    public int getCurrentTurn() {
-        return currentTurn;
-    }
-
-    public Game(int size) {
+    public Game(int size, Player player1, Player player2) {
         this.size = size;
+        board = new Board(size);
+        this.player1 = player1;
+        this.player2 = player2;
+
+        this.player1.setOpponent(player2);
+        this.player2.setOpponent(player1);
+
+        currentPlayer = player1;
+
+        if (player1.isAi()) {
+            makeMove(0, 0);
+            switchPlayer();
+        }
     }
 
     public boolean isValidMove(int x, int y) {
         return board.isValidMove(x, y);
     }
 
-    public void makeMove(int x, int y) {
-
-    }
-
-    public void startGame() throws IOException {
-        board = new Board(size);
-        player1 = new HumanPlayer(1);
-        player2 = new MinMaxAi(2);
-
-        player1.setOpponent(player2);
-        player2.setOpponent(player1);
-
-        currentTurn = player1.getId();
-        board.print();
-        while (true) {
-            if (currentTurn == player1.getId()) {
-                player1.makeMove(board);
-                board.print();
-                if (board.hasWon(player1)) {
-                    System.out.println("Player " + player1.getId() + " has won");
-                    break;
-                } else if (board.hasDrawn(player1, player2)) {
-                    System.out.println("its a draw");
-                    break;
+    public String makeMove(int x, int y) {
+        String status = null;
+        if (isValidMove(x, y)) {
+            if (!currentPlayer.isAi()) {
+                ((HumanPlayer) currentPlayer).makeMove(board, x, y);
+                status = checkGameStatus();
+                if (status != null) {
+                    return status;
                 }
-                currentTurn = player2.getId();
+                switchPlayer();
             }
-
-            if (currentTurn == player2.getId()) {
-                player2.makeMove(board);
-                board.print();
-                if (board.hasWon(player2)) {
-                    System.out.println("Player " + player2.getId() + " has won");
-                    break;
-                } else if (board.hasDrawn(player1, player2)) {
-                    System.out.println("its a draw");
-                    break;
-                }
-                currentTurn = player1.getId();
+            if (currentPlayer.isAi()) {
+                currentPlayer.makeMove(board);
+                status = checkGameStatus();
+                switchPlayer();
             }
         }
-
+        return status;
     }
 
-    public static void main(String[] args) {
-
-        Game game = new Game(3);
-        try {
-            GUI gui = new GUI();
-            game.startGame();
-        } catch (IOException e) {
-            e.printStackTrace();
+    private String checkGameStatus() {
+        if (board.hasWon(currentPlayer)) {
+            return "Player " + currentPlayer.getId() + " has won";
+        } else if (board.hasDrawn(player1, player2)) {
+            return "It's a draw!";
+        } else {
+            return null;
         }
     }
+
+    private void switchPlayer() {
+        if (currentPlayer == player1) {
+            currentPlayer = player2;
+        } else {
+            currentPlayer = player1;
+        }
+    }
+
+    public String getCellValue(int x, int y) {
+        if (board.getValue(x, y) == player1.getId()) {
+            return "X";
+        } else if (board.getValue(x, y) == player2.getId()) {
+            return "O";
+        } else {
+            return "";
+        }
+    }
+
+    public int getSize() {
+        return size;
+    }
+
 }

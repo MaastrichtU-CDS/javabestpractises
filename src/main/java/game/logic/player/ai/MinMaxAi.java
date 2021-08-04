@@ -7,7 +7,7 @@ public class MinMaxAi extends Player {
     private final int maxDepth = 10;
 
     public MinMaxAi(int id) {
-        super(id);
+        super(id, true);
     }
 
     public void makeMove(Board board) {
@@ -23,11 +23,8 @@ public class MinMaxAi extends Player {
                 }
                 Board copy = board.copy();
                 copy.makeMove(this, x, y);
-                if (x == 1 && y == 2) {
-                    System.out.println(value);
-                }
                 int temp = alphabeta(copy, maxDepth - 1, -3, 3, false);
-                System.out.println(temp);
+
                 if (temp > value) {
                     value = temp;
                     bestX = x;

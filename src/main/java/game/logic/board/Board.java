@@ -11,14 +11,8 @@ public class Board {
         this.board = new int[size][size];
     }
 
-    public void print() {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                System.out.print("||" + board[i][j] + "||");
-            }
-            System.out.println();
-            System.out.println("-------------");
-        }
+    public int getValue(int x, int y) {
+        return board[x][y];
     }
 
     public Board copy() {

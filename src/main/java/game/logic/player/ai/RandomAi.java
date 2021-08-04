@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class RandomAi extends Player {
     public RandomAi(int id) {
-        super(id);
+        super(id, true);
     }
 
     public void makeMove(Board board) {
