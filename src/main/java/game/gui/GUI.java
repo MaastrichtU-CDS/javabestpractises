@@ -1,6 +1,6 @@
 package game.gui;
 
-import game.main.Game;
+import game.logic.Game;
 
 import javax.swing.*;
 

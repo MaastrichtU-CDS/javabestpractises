@@ -1,4 +1,4 @@
-package game.main;
+package game.logic;
 
 import game.logic.board.Board;
 import game.logic.player.Player;

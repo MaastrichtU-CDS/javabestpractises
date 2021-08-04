@@ -1,6 +1,7 @@
 package game.main;
 
 import game.gui.GUI;
+import game.logic.Game;
 import game.logic.player.Player;
 import game.logic.player.ai.MinMaxAi;
 import game.logic.player.human.HumanPlayer;
