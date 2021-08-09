@@ -3,10 +3,15 @@ package game.logic.player.ai;
 import game.logic.board.Board;
 import game.logic.player.Player;
 
-public class MinMaxAi extends Player {
-    private final int maxDepth = 10;
+/**
+ * Implementation of an AI that uses the AlphaBeta algorithm to make a move
+ */
+public class AlphaBetaAi extends Player {
+    //Max depth is the number of moves the AI can look ahead
+    //The higher the number the more accurate its predictions and the slower the AI becomes
+    private final int maxDepth = 5;
 
-    public MinMaxAi(int id) {
+    public AlphaBetaAi(int id) {
         super(id, true);
     }
 
@@ -45,7 +50,7 @@ public class MinMaxAi extends Player {
             return 0;
         } else if (board.noMoveleft()) {
             return 0;
-        } else if (depth > 1) {
+        } else if (depth > 0) {
             if (max) {
                 int size = board.getSize();
                 int value = -2;
@@ -93,7 +98,8 @@ public class MinMaxAi extends Player {
                 }
                 return value;
             }
+        } else {
+            return 0;
         }
-        return 0;
     }
 }

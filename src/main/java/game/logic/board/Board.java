@@ -2,6 +2,10 @@ package game.logic.board;
 
 import game.logic.player.Player;
 
+/**
+ * Contains the actual board logic.
+ * I.e. methods to make a move, check validity of a move, check if the game was won
+ */
 public class Board {
     private int size;
     private int[][] board;
@@ -45,12 +49,8 @@ public class Board {
     }
 
     public boolean hasDrawn(Player player1, Player player2) {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (isValidMove(i, j)) {
-                    return false;
-                }
-            }
+        if (!noMoveleft()) {
+            return false;
         }
         if (hasWon(player1)) {
             return false;

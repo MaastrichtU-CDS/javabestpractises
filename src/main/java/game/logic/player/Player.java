@@ -2,6 +2,10 @@ package game.logic.player;
 
 import game.logic.board.Board;
 
+/**
+ * Abstract player class, allows us to create different human and AI variants that use the same core-logic
+ * so we can plug them in when needed
+ */
 public abstract class Player {
     private int id;
     protected Player opponent;

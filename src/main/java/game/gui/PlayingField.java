@@ -7,6 +7,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Creates and maintains the actual playing field
+ * Communicates with the game logic whenever a move is made by a player clicking on a button
+ */
 public class PlayingField extends JPanel {
     private int size;
     private Game game;
@@ -28,6 +32,9 @@ public class PlayingField extends JPanel {
         }
     }
 
+    /**
+     * Method used to reset what is shown on a button after a move is made
+     */
     public void revalidateButtonText() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -37,6 +44,11 @@ public class PlayingField extends JPanel {
         this.repaint();
     }
 
+    /**
+     * Creates a listener that triggers the game logic after a button is pressed
+     *
+     * @return
+     */
     private ActionListener createButtonListener() {
         return new ActionListener() {
             @Override

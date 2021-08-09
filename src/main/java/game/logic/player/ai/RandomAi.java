@@ -5,6 +5,9 @@ import game.logic.player.Player;
 
 import java.util.Random;
 
+/**
+ * Implementation of an AI that randomly makes moves
+ */
 public class RandomAi extends Player {
     public RandomAi(int id) {
         super(id, true);
