@@ -45,15 +45,19 @@ public class AlphaBetaAi extends Player {
 
     private int alphabeta(Board board, int depth, int alpha, int beta, boolean max) {
         if (board.hasWon(this)) {
+            //player has won so value is high
             return 1;
         } else if (board.hasWon(super.getOpponent())) {
+            //player has lost so value is low
             return -1;
         } else if (board.hasDrawn(this, super.getOpponent())) {
-            return 0;
-        } else if (board.noMoveleft()) {
+            //player has reached a draw so value is neutral
             return 0;
         } else if (depth > 0) {
+            //Neither player has won, nor is there a draw and we're not yet at the maximum depth so check childeren
+            // moves
             if (max) {
+                // looking at maximizing players moves
                 int size = board.getSize();
                 int value = -ALPHABETA - +1;
                 for (int x = 0; x < size; x++) {
@@ -77,6 +81,7 @@ public class AlphaBetaAi extends Player {
                 }
                 return value;
             } else {
+                // looking at opponent moves, so minimizing player
                 int size = board.getSize();
                 int value = 2;
                 for (int x = 0; x < size; x++) {
@@ -101,6 +106,7 @@ public class AlphaBetaAi extends Player {
                 return value;
             }
         } else {
+            //reached maximum depth, noone has won and no draw, so return neutral value
             return 0;
         }
     }
