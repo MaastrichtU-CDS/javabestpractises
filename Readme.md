@@ -6,8 +6,8 @@ In this project we show some of the best practices for a Java maven project. The
 be perfectly optimized, it is simply an example of how to write "clean" code and use the various maven plugins to check
 the quality of your code.
 
-The pom of this project can be used as the basis of your own maven project. It contains the necesary dependencies to set
-up:
+The pom of this project can be used as the basis of your own maven project. It contains the necessary dependencies to
+set up:
 
 1) Unit testing
 2) Test coverage
@@ -16,35 +16,37 @@ up:
 
 ### Dependency checks
 
-The dependency check plugin checks if all dependencies you've declared in your pom are are actually used. It will
-complain if you include dependencies that are not used. It will also throw an error if you use dependencies implicitly,
-you should declare them explicitly.
+The dependency check plugin checks if all dependencies you've declared in your pom are actually used. It will complain
+if you include dependencies that are not used. It will also throw an error if you use dependencies implicitly, you
+should declare them explicitly.
 
 ### Checkstyle checks
 
-The checkstyle plugin checks if the code you've written fullfills the checkstyle rules you have defined. The rules
+The checkstyle plugin checks if the code you've written fulfills the checkstyle rules you have defined. The rules
 included in checkstyle.xml are based on a set of commonly accepted rules (https://checkstyle.org/config_coding.html)
 This is similar to PEP in python.
 
 The rules contained in this set fall in two categories:
 
-1) Code-style that is pure personal preference (e.g. do I place a space after { or not?)
-2) Code-style that is indiciative of common bugs (e.g. magic numbers)
+1) Code-style that is pure personal preference (e.g., do I place a space after { or not?)
+2) Code-style that is indicative of common bugs (e.g., magic numbers)
 
-It is important to note that these are merely guidelines and that the rules can be surpressed if needed for specific
+It is important to note that these are merely guidelines and that the rules can be suppressed if needed for specific
 cases in case you have a false positive. However, you should avoid this if at all possible as the main goal of these
 rules is to create consistency. The benefits of these consistencies are worth the inconvenience of a few false
-positives.
+positives. It is also important to realize it is possible to set up most IDEA's to automatically apply as much of the
+code-style as possible. Things like the correct amount of spaces around brackets can easily be automated, and this is
+far less annoying than needing to this manually.
 
-However the style you should use in your project is not set in stone; you can change the checkstyle rules if you notice
+However, the style you should use in your project is not set in stone; you can change the checkstyle rules if you notice
 a certain rule does not work for you. However, you should always be consistent within a given project.
 
 #### Naming conventions
 
 Checkstyle also covers naming conventions. Like with all rules this is open to personal preference although Java does
-have some generally used conventions (i.e. classes use PascalCase and methods use camelCase).
+have some generally used conventions (i.e., classes use PascalCase and methods use camelCase).
 
-However there are are 2 rules that should always hold:
+However, there are 2 rules that should always hold:
 
 1) Names should be descriptive. Others should be able to understand at a glance what a variable is purely based on its
    name
@@ -54,10 +56,10 @@ However there are are 2 rules that should always hold:
 
 #### Comments
 
-Although good code is in theory self-explanatory without any extra information this does not always hold in practise.
-Adding in comments to explain what is going on can be very usefull.
+Although good code is in theory self-explanatory without any extra information, this does not always hold in practise.
+Adding in comments to explain what is going on can be very useful.
 
-This can be form of javadoc comments. But it can also be very usefull to add in-line comments in bits of code where
+This can be form of javadoc comments, but it can also be very useful to add in-line comments in bits of code where
 you're doing a complicated calculation. This is especially true when using more complex constructs, like recursion or
 lambdas which are generally more difficult to read.
 
@@ -65,29 +67,29 @@ lambdas which are generally more difficult to read.
 
 The plugin for test-coverage tests how much of your code base is covered by your unit-tests As a general rule of thumb
 people aim for 70-80% coverage. A high coverage is good because it means you will quickly find out if a new change
-breaks some old code. However, bear in mind that a 100% coverage is unrealistic and not necesarly usefull.
+breaks some old code. However, bear in mind that a 100% coverage is unrealistic and not necessarily useful.
 
-Again it is possible to supress the coverage for specific classes or even packages, for example in this project the
+Again it is possible to suppress the coverage for specific classes or even packages, for example in this project the
 packages game.gui and game.main are exempt from test coverage. Use this ability sparingly. More on what should be tested
 can be found in the Unit-test section.
 
 ### Unit-tests
 
-The unit-test plugin allows you to automaticly run all your unit-tests when you build the project.
+The unit-test plugin allows you to automatically run all your unit-tests when you build the project.
 
 #### What is important to unit-test?
 
-Unit-tests are important to ensure a developer doesn't accidently break things with an update. However, not every single
-line of code is worth writing a unit-test for.
+Unit-tests are important to ensure a developer doesn't accidentally break things with an update. However, not every
+single line of code is worth writing a unit-test for.
 
 Unit-tests should be written to test specific behaviours, not the implementations of that behaviour. If you test the
 implementations then unit-tests will become extremely annoying during refactor-steps.
 
 This means that you do not want to test methods like getters & setters. Nor do you want to test methods like
-MainLoop.main that do nothing of signficance on their own. You want to tests methods that actually do something usefull.
+MainLoop.main that do nothing of significance on their own. You want to test methods that actually do something useful.
 
-This also means that unit-testing a GUI is not particularly usefull as a unit-test for the GUI would mostly concern the
-implementation (i.e. is the right amount of buttons created?). It is possible to automate GUI-testing, and this is
+This also means that unit-testing a GUI is not particularly useful as a unit-test for the GUI would mostly concern the
+implementation (i.e., is the right amount of buttons created?). It is possible to automate GUI-testing, and this is
 important for integration-tests, but far less relevant for unit-tests.
 
 This is why these two packages are excluded in this example project. Other examples of classes that are not particularly
@@ -102,27 +104,27 @@ other languages. The project is divided into three logical parts:
 - The GUI
 - The main loop for the program as a whole
 
-These parts have as few dependencies on eachother as possible. And whenever you write code you should try to make
-similar divisions in your code. This division is important for three main reasons.
+These parts have as few dependencies on another as possible. Whenever you write code, you should try to make similar
+divisions in your code. This division is important for three main reasons.
 
 First you do not want to create a giant behemoth of a file that is responsible for everything. Dividing things up makes
 the project far easier to maintain and work with.
 
-Secondly, by dividing the code into logical subsets you can guarantee the various functions are independent of
-eachother. The game logic should be able to work regardless of how the GUI is implemented.
+Secondly, by dividing the code into logical subsets you can guarantee the various functions are independent of another.
+The game logic should be able to work regardless of how the GUI is implemented.
 
 Third, dividing the code up makes it easier to write small unit-tests. While a single unit-test that covers your entire
-code-base can be usefull in certain cases it is often also very usefull to have unittests that cover smaller steps in
-your code. By testing smaller steps it'l be easier to determine where your error is happening. This is why this project
-both has a GameTest, which tests basicly everything, as well as individual unit-tests for the different player variants
-& the board itself
+code-base can be useful in certain cases, it is often also very useful to have unittests that cover smaller steps in
+your code. By testing smaller steps it'll be easier to determine where your error is happening. This is why this project
+both has a GameTest, which tests basically everything, and individual unit-tests for the different player variants & the
+board itself
 
 Within these logical parts the code is further subdivided. The game-logic contains a class that keeps track of the main
 game, a class that keeps track of the state of the board, and a package that implements various types of players.
 
-In the implementation of players you can futher see how this division can help you plugin different variants into a
+In the implementation of players you can further see how this division can help you plugin different variants into a
 generic framework. The core of players is the Player class, which is abstract, and there are three actual types of
-players: Humanplayers, RandomAi's and AlphaBetaAi's. Each of these players determines what move to play in a different
-way. But thanks to the shared generic parent class they can be used interchangeably.
+players: HumanPlayer, RandomAi and AlphaBetaAi. Each of these players determines what move to play differently, but
+thanks to the shared generic parent class they can be used interchangeably.
 
 
