@@ -86,6 +86,10 @@ public class Game {
         }
     }
 
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
     public String getCellValue(int x, int y) {
         if (board.getValue(x, y) == player1.getId()) {
             return "X";

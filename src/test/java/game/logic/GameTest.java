@@ -3,6 +3,7 @@ package game.logic;
 import game.logic.player.Player;
 import game.logic.player.ai.AlphaBetaAi;
 import game.logic.player.ai.RandomAi;
+import game.logic.player.human.HumanPlayer;
 import junit.framework.TestCase;
 import org.junit.Test;
 
@@ -25,6 +26,20 @@ public class GameTest extends TestCase {
             Game game = new Game(i, player1, player2);
             assertTrue(game.isFinished());
         }
+    }
+
+    @Test
+    public void testAiPlayerStart() {
+        // test different sized games with random AIs
+        Player player1 = new AlphaBetaAi(1);
+        HumanPlayer player2 = new HumanPlayer(2);
+        Game game = new Game(3, player1, player2);
+        game.makeMove(1, 0);
+        assertEquals(game.getCellValue(0, 0), "X");
+        assertEquals(game.getCellValue(1, 0), "O");
+        assertEquals(game.getCellValue(0, 1), "X");
+        assertEquals(game.getCurrentPlayer(), player2);
+
     }
 
 }
