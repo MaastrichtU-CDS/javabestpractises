@@ -1,10 +1,12 @@
 package game.logic.player.human;
 
 import game.logic.board.Board;
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class HumanPlayerTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
+public class HumanPlayerTest {
 
     @Test
     public void testMakeMove() {

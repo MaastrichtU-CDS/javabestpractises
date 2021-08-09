@@ -1,10 +1,11 @@
 package game.logic.player.ai;
 
 import game.logic.board.Board;
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class AlphaBetaAiTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class AlphaBetaAiTest {
 
     @Test
     public void testMakeMoveArbitraryBoardSize() {

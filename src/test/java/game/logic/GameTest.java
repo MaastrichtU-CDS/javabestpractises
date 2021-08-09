@@ -4,10 +4,12 @@ import game.logic.player.Player;
 import game.logic.player.ai.AlphaBetaAi;
 import game.logic.player.ai.RandomAi;
 import game.logic.player.human.HumanPlayer;
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class GameTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class GameTest {
 
     @Test
     public void testGameLoop() {

@@ -16,9 +16,9 @@
     <dependencies>
         <!-- unit test dependency -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>RELEASE</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -105,12 +105,17 @@
                         <configuration>
                             <rules>
                                 <rule>
+                                    <excludes>
+                                        <!--Exclude gui and main package from testcoverage -->
+                                        <exclude>game.gui</exclude>
+                                        <exclude>game.main</exclude>
+                                    </excludes>
                                     <element>PACKAGE</element>
                                     <limits>
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.00</minimum>
+                                            <minimum>0.70</minimum>
                                         </limit>
                                     </limits>
                                 </rule>

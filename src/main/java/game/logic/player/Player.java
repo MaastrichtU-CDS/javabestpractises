@@ -8,7 +8,7 @@ import game.logic.board.Board;
  */
 public abstract class Player {
     private int id;
-    protected Player opponent;
+    private Player opponent;
     private boolean ai;
 
     public Player(int id, boolean ai) {
@@ -29,5 +29,9 @@ public abstract class Player {
 
     public void setOpponent(Player opponent) {
         this.opponent = opponent;
+    }
+
+    public Player getOpponent() {
+        return this.opponent;
     }
 }

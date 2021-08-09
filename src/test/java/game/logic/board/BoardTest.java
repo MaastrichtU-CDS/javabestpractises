@@ -2,10 +2,11 @@ package game.logic.board;
 
 import game.logic.player.Player;
 import game.logic.player.ai.RandomAi;
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class BoardTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class BoardTest {
     private static final int SIZE = 3;
 
     @Test
