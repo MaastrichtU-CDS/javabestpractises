@@ -68,8 +68,8 @@ people aim for 70-80% coverage. A high coverage is good because it means you wil
 breaks some old code. However, bear in mind that a 100% coverage is unrealistic and not necesarly usefull.
 
 Again it is possible to supress the coverage for specific classes or even packages, for example in this project the
-packages game.gui and game.main are excempt from test coverage. Use this ability sparingly. More on what should be
-tested can be found in the Unit-test section.
+packages game.gui and game.main are exempt from test coverage. Use this ability sparingly. More on what should be tested
+can be found in the Unit-test section.
 
 ### Unit-tests
 
@@ -95,14 +95,15 @@ interesting to unit-tests independently would be POJO's.
 
 # Architecture:
 
-In this project the basics of good architecture can be seen. The project is divided into three logical parts:
+In this project the basics of good architecture can be seen. These principles are not Java specific, but also hold for
+other languages. The project is divided into three logical parts:
 
 - The game logic
 - The GUI
 - The main loop for the program as a whole
 
 These parts have as few dependencies on eachother as possible. And whenever you write code you should try to make
-similar divisions in your code. This division is important for two main reasons.
+similar divisions in your code. This division is important for three main reasons.
 
 First you do not want to create a giant behemoth of a file that is responsible for everything. Dividing things up makes
 the project far easier to maintain and work with.
