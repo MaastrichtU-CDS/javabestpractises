@@ -48,9 +48,9 @@ However there are are 2 rules that should always hold:
 
 1) Names should be descriptive. Others should be able to understand at a glance what a variable is purely based on its
    name
-2) Avoid acronyms if possible. Your IDEA will auto-complete anyway, do not be lazy and create unreadable names because
-   you want to type all the characters. This is especially relevant when it's acronyms you've made up yourself. Commonly
-   known domain specific acronyms are acceptable.
+2) Avoid acronyms if possible. Your IDEA will auto-complete anyway, do not create unreadable names because you want to
+   be lazy. This is especially relevant when it's acronyms you've made up yourself. Commonly known domain specific
+   acronyms are acceptable.
 
 #### Comments
 
