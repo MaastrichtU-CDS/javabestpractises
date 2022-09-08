@@ -1,5 +1,33 @@
 # This is an example project for Java best practices
 
+## When to use Java in CDS
+
+- You want to write a large project with a considerable amount of custom code.
+
+## When not to use Java in CDS:
+
+- You just want to write a quick script mostly using existing libraries
+
+### Advantages:
+
+- Verbose: Java enforces certain rules, such as explicitly typing every variable. This makes it easier to understand the
+  code as it is very easy to see what is going on. It also naturally prevents certain bugs & mistakes from occuring.
+    - Short-term this is often annoying, but in the long-term it saves time. Especially when working in a larger
+      project, or using someone else's code.
+- Focus on professional settings: Java is often used in enterprise enviroments. This means it has a lot of professional
+  tooling & libraries that supports the development. Consequently the tooling & libraries are often in a more mature
+  state than the tooling available in other languages.
+- Performance: Java is faster than R or Python
+- Object Oriented: OO is an easy to understand programming paradigm.
+
+### Disadvantages:
+
+- Verbose: Java enforces certain rules. If you just want to write a simple 5-line script there is a lot of boiler-plate
+  code.
+- Performance: C/C++ is still faster
+- Object Oriented: not all tasks benefit from an OO approach.
+- Your favorite library might not be available in Java.
+
 ## Maven project
 
 In this project we show some of the best practices for a Java maven project. The code in this project is not intended to
@@ -93,7 +121,9 @@ implementation (i.e., is the right amount of buttons created?). It is possible t
 important for integration-tests, but far less relevant for unit-tests.
 
 This is why these two packages are excluded in this example project. Other examples of classes that are not particularly
-interesting to unit-tests independently would be POJO's.
+interesting to unit-tests independently would be POJO's (Plain Old Java Objects). These classes only contain getters and
+setters and should not be explicitly tested. However, they should be implicitly tested as part of a unit-test that test
+actual functionality.
 
 # Architecture:
 
